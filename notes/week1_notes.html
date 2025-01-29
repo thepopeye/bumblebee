@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 1 Notes - Deep Learning</title>
+    <script type="text/javascript" async
+      src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+    <h1>Week 1: Introduction to Deep Learning</h1>
+
+    <h2>Outline</h2>
+    <p>This week introduces the fundamental concepts of <b>deep learning</b>, focusing on <b>feedforward neural networks (FNNs)</b>, 
+    <b>backpropagation</b>, and <b>activation functions</b>. Participants will explore how neural networks function as 
+    universal function approximators and understand why <b>multi-layer perceptrons (MLPs)</b> are essential for solving non-linearly 
+    separable problems like XOR.</p>
+
+    <h2>1️⃣ Feedforward Neural Networks</h2>
+    <p>A <b>feedforward neural network (FNN)</b> maps an input vector <b>X</b> to an output <b>Y</b> using layers of neurons:</p>
+    $$ h = \sigma(WX + b) $$
+
+    <h3>Multi-Layer Perceptron (MLP)</h3>
+    <p>An MLP with a single hidden layer computes:</p>
+    $$ h = \sigma(W_1 X + b_1) $$
+    $$ y = \sigma(W_2 h + b_2) $$
+
+    <h2>2️⃣ Activation Functions</h2>
+    <h3>Why Are They Needed?</h3>
+    <p>Without non-linearity, an MLP collapses into a single linear function. Activation functions <b>enable complex decision boundaries</b>.</p>
+
+    <h3>Common Activation Functions</h3>
+    <b>Sigmoid:</b>
+    $$ \sigma(x) = \frac{1}{1 + e^{-x}} $$
+
+    <b>ReLU (Rectified Linear Unit):</b>
+    $$ ReLU(x) = \max(0, x) $$
+
+    <b>Tanh:</b>
+    $$ \tanh(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}} $$
+
+    <h2>3️⃣ Gradient Descent & Backpropagation</h2>
+    <h3>Gradient Descent</h3>
+    <p>Used to minimize the loss function <b>L</b> by updating weights <b>W</b>:</p>
+    $$ W_{\text{new}} = W - \eta \frac{\partial L}{\partial W} $$
+
+    <h3>Backpropagation</h3>
+    <p>Backpropagation <b>computes gradients efficiently</b> using the chain rule:</p>
+    <p><b>Output Layer Gradient:</b></p>
+    $$ \frac{\partial L}{\partial W_2} = \delta_2 h^T $$
+
+    <p><b>Hidden Layer Gradient:</b></p>
+    $$ \delta_1 = (\delta_2 W_2) \circ \sigma'(h) $$
+
+    <h2>4️⃣ Loss Functions</h2>
+    <h3>Mean Squared Error (MSE)</h3>
+    $$ L = \frac{1}{N} \sum (y_{\text{true}} - y_{\text{pred}})^2 $$
+
+    <h3>Cross-Entropy Loss</h3>
+    $$ L = - \sum y \log \hat{y} $$
+
+    <h2>5️⃣ Weight Initialization</h2>
+    <h3>Xavier (Glorot) Initialization</h3>
+    $$ W \sim \mathcal{N}\left(0, \frac{1}{\text{fan-in}}\right) $$
+
+    <h3>He Initialization (for ReLU)</h3>
+    $$ W \sim \mathcal{N}\left(0, \frac{2}{\text{fan-in}}\right) $$
+
+    <h2>6️⃣ Summary of Key Equations</h2>
+    <table border="1">
+        <tr><th>Concept</th><th>Equation</th></tr>
+        <tr><td><b>Feedforward Layer</b></td><td> $$ h = \sigma(WX + b) $$ </td></tr>
+        <tr><td><b>Backpropagation</b></td><td> $$ \frac{\partial L}{\partial W_2} = \delta_2 h^T $$ </td></tr>
+        <tr><td><b>Sigmoid Activation</b></td><td> $$ \sigma(x) = \frac{1}{1 + e^{-x}} $$ </td></tr>
+        <tr><td><b>ReLU Activation</b></td><td> $$ ReLU(x) = \max(0, x) $$ </td></tr>
+        <tr><td><b>MSE Loss</b></td><td> $$ L = \frac{1}{N} \sum (y_{\text{true}} - y_{\text{pred}})^2 $$ </td></tr>
+        <tr><td><b>Cross-Entropy Loss</b></td><td> $$ L = - \sum y \log \hat{y} $$ </td></tr>
+    </table>
+
+    <p><b>Recommended Reading:</b></p>
+    <ul>
+        <li><b>Goodfellow:</b> Chapters 6 & 8</li>
+        <li><b>D2L:</b> Chapter 3</li>
+    </ul>
+
+</body>
+</html>
+
